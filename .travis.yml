@@ -5,20 +5,20 @@ services:
 
 before_install: 
 
-    - docker build -t ahmeddeployment/react-test -f ./client/dockerfile.dev ./client
+    - docker build -t quickwatcho/react-test -f ./client/dockerfile.dev ./client
 
 
 script: 
 
-    - docker run -e CI=true ahmeddeployment/react-test npm test 
+    - docker run -e CI=true quickwatcho/react-test npm test 
 
 
 after_sucess: 
 
-    - docker build -t ahmeddeployment/multi-client ./client 
-    - docker build -t ahmeddeployment/multi-nginx  ./nginx
-    - docker build -t ahmeddeployment/multi-server  ./server  
-    - docker build -t ahmeddeployment/multi-worker  ./worker
+    - docker build -t quickwatcho/multi-client ./client 
+    - docker build -t quickwatcho/multi-nginx  ./nginx
+    - docker build -t quickwatcho/multi-server  ./server  
+    - docker build -t quickwatcho/multi-worker  ./worker
 
 
 # login to docker cli 
@@ -28,10 +28,10 @@ after_sucess:
 # take those images and push them to dockerhub
 
 
-- docker push  ahmeddeployment/multi-client
-- docker push  ahmeddeployment/multi-nginx
-- docker push  ahmeddeployment/multi-server
-- docker push  ahmeddeployment/multi-worker
+- docker push  quickwatcho/multi-client
+- docker push  quickwatcho/multi-nginx
+- docker push  quickwatcho/multi-server
+- docker push  quickwatcho/multi-worker
 
 
 
